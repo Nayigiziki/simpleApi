@@ -1,0 +1,41 @@
+Build Instructions:
+  npm install - installs dependencies
+  npm start - runs the server at localhost:8080
+  mocha tests - runs the tests in test/serverSpec.js
+
+
+Technologies used:
+
+bcryptjs
+-To mitigate data compromisation, passwords are stored in their salted/hashed state. This was accomplished 
+  with the bcryptjs node package. 
+Expressjs
+-To handle request routing, Expressjs was implemented. Expressjs' middleware architecture makes handling
+  requests/responses very easy.
+Mongoose/MongoDb
+-To persist data, mongodb/mongoose was implemented. Given the lack of relationships between the data, and the need
+  to quickly scaffold a solution, mongo was used. 
+
+
+Versioning:
+There is a version number in the URI. This is technically not restful; however, this is approach to versioning
+makes it incredibly simple to release different versions.
+
+Pagination:
+I would implement a cursor:
+
+response Obj
+{
+  'data': [],
+   'pagination' : {
+      'cursor' : {
+        'after' : 10,
+        'next_url' : '/api/v1/users?cursor=10&number=10'
+      }
+   }
+}
+
+data array holds the json representation contents of the request
+cursor holds two properties
+  after - if we can the contents after 10, use the next_url, which represents the respective query to make this happen
+  number - represents that number of elements to return
