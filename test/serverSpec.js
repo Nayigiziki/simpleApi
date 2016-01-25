@@ -10,12 +10,6 @@ var userModel = require('../authentication/db').userModel;
 var db = mongoose.connection;
 mongoose.connect(config.database);
 
-/*
-Build an endpoint that authenticates a user based on a login/password passed in a JSON 
-payload and verifies against a simple data structure (Mongo, MySQL, etc.).
-*/
-
-
 describe('Authentication', function() {
   after(function(done){
     userModel.remove({occupation: 'dummy'}, function(err){
