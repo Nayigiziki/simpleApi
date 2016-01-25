@@ -1,6 +1,5 @@
 var expect = require('chai').expect;
 var url = 'http://127.0.0.1:8080/api/v1';
-var async = require('async');
 var request = require('superagent');
 var express = require('express');
 var mongoose = require('mongoose');
